@@ -20,7 +20,6 @@ public class APIWord {
         String result = null;
         String url = uri+"?get";
 
-
         try {
             URL requestURL = new URL(url);
             urlConnection = (HttpURLConnection) requestURL.openConnection();

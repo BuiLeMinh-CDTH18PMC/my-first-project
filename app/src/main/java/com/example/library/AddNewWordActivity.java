@@ -17,22 +17,29 @@ public class AddNewWordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_word);
-
-        Intent intent = getIntent();
-        String result = intent.getStringExtra("list");
-        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
     }
 
     public void click(View view) throws ExecutionException, InterruptedException {
         String word = ((EditText) findViewById(R.id.txtWord)).getText().toString();
         String def = ((EditText) findViewById(R.id.txtDef)).getText().toString();
+        if(checkNull(word) || checkNull(def)){
+            Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Word newWord = new Word(word, def);
-        Toast.makeText(this, newWord.toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, newWord.toString(), Toast.LENGTH_SHORT).show();
         Button btn = (Button)view;
         new APIGetting(this).execute(newWord).get();
     }
 
+    private boolean checkNull(String str){
+        if(str.isEmpty() || str.trim().isEmpty())
+            return true;
+        return false;
+    }
+
     public void clickBack(View view) {
-        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -1,17 +1,9 @@
 package com.example.library;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class APIGetting extends AsyncTask<Word, String, String> {
 
@@ -49,14 +41,6 @@ public class APIGetting extends AsyncTask<Word, String, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        Intent intent;
-//        if (s == "200")
-//            intent = new Intent(m_con, DictionaryActivity.class);
-//        else
-            intent = new Intent(m_con, DictionaryActivity.class);
-        intent.putExtra("list", s);
-        Activity acti = (Activity) m_con;
-        acti.startActivity(intent);
         Toast.makeText(m_con, "Finished", Toast.LENGTH_SHORT).show();
     }
 }
