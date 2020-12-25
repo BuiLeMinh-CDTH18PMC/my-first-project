@@ -1,4 +1,4 @@
-package com.example.kiemtraapi;
+package com.example.practive;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -6,8 +6,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-public class APIGetting extends AsyncTask<Word, String, String> {
-
+public class APIGetting extends AsyncTask<TinTuc, String, String> {
     private Context m_con;
 
     public APIGetting(Context con) {
@@ -21,17 +20,8 @@ public class APIGetting extends AsyncTask<Word, String, String> {
     }
 
     @Override
-    protected String doInBackground(Word... word) {
-        if (word[0].getWord().isEmpty())
-            return APIWord.getWords();
-        else {
-            try {
-                return APIWord.addWord(word[0]);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
+    protected String doInBackground(TinTuc... tintuc) {
+        return APITinTuc.getTinTucs();
     }
 
     @Override

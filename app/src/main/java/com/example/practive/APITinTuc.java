@@ -1,11 +1,4 @@
-package com.example.apiapplication;
-
-import android.util.Log;
-import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+package com.example.practive;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,20 +6,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.LinkedList;
 
-public class APIQuestion {
-    static String getQuestions(String Level){
-        HttpURLConnection urlConnection = null;
+public class APITinTuc {
+    static HttpURLConnection urlConnection = null;
+    static String url = "http://192.168.43.246/test.php";
+
+    static String getTinTucs(){
         BufferedReader reader = null;
         String result = null;
 
         try {
-//            URL requestURL = new URL("https://gorest.co.in/public-api/users");
-            URL requestURL = new URL("http://minhbuile.pixelcent.com/api/api.php?DoKho="+Level);
+            URL requestURL = new URL(url);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
+
             InputStream inputStream = urlConnection.getInputStream();
             reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder builder = new StringBuilder();

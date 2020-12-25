@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "KiemTraAPI"
+rootProject.name = "Practive"
